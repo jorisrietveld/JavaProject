@@ -1,0 +1,13 @@
+*{
+    padding:0;
+    margin: 0;
+}
+
+#logo-navbar-img{
+    top:-20px;
+    position: relative;
+}
+
+#container-fluid-navbar{
+    margin-bottom: 0;
+}
