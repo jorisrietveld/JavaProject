@@ -8,7 +8,7 @@ $(document).ready(function(){
         var inpUsername = $("#username").val();
         var inpPassword = $("#password").val();
 
-        $.post("LoginProcess.jsp", {username:inpUsername,password:inpPassword}, function(data, status){
+        $.post("ProsessLogin.jsp", {username:inpUsername,password:inpPassword}, function(data){
             console.log( data.trim() );
         });
 
