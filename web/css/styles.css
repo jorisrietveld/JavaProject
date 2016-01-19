@@ -11,3 +11,23 @@
 #container-fluid-navbar{
     margin-bottom: 0;
 }
+
+.feedback-error{
+    color: #ff0000;
+    font-size: large;
+}
+
+.feedback-success{
+    color: #00FF00;
+    font-size: large;
+}
+
+.navbar-welkom-text{
+    color: #FFFFFF;
+}
+
+body{
+    background-image: url("../images/background.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+}

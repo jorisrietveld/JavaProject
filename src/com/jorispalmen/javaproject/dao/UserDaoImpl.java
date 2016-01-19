@@ -146,7 +146,6 @@ public class UserDaoImpl implements UserDao
 	{
 		User user = new User();
 
-
 		try{
 			PreparedStatement statement = connection.prepareStatement( sql );
 			ResultSet resultSet = statement.executeQuery();

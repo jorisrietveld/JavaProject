@@ -5,7 +5,11 @@
 	<title></title>
 </head>
 <body>
-<%@include file="includes/header.jsp"%>
+	<% if( session.getAttribute("session") == null ){ %>
+	<%@include file="includes/header.jsp"%>
+	<% }else{ %>
+	<%@include file="includes/header-logged-in.jsp"%>
+	<% } %>
 
 </body>
 </html>

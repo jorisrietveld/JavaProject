@@ -28,6 +28,11 @@ public class DaoManager
 		}
 	}
 
+	public DaoManager()
+	{
+		this.openConnection();
+	}
+
 	public void openConnection()
 	{
 		try{

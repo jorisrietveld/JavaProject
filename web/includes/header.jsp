@@ -1,10 +1,72 @@
-<%
-	String loginMessage = (String)request.getAttribute( "loginMessage" );
+<div class="modal fade login-modal" id="login-modal" tabindex="-1" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Error</h4>
+			</div>
+			<div class="modal-body">
+				Er is geen gebruiker gevondem met de door u ingevulde gegevens.
+			</div>
+		</div>
+	</div>
+</div>
 
-	if( loginMessage != null ){
-		out.println( "<script>console.log(\""+loginMessage+"\"</script>" );
-	}
-%>
+<div class="modal fade register-modal" tabindex="-1" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form id="register-form" name="register-form" class="form">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Registreeren</h4>
+			</div>
+			<div class="modal-body">
+
+					<div class="form-group" id="register-form-group-username">
+						<label class="control-label" for="register-username">Gebruikersnaam:</label>
+						<input id="register-username" name="register-username" type="text" placeholder="Gebruikersnaam" class="form-control" required="" onkeyup="checkUsername()">
+					</div>
+
+					<div class="form-group" id="register-form-group-firstname">
+						<label class="control-label" for="register-firstName">Voornaam:</label>
+						<input id="register-firstName" name="register-firstName" type="text" placeholder="Voornaam" class="form-control" required="">
+
+					</div>
+
+					<div class="form-group" id="register-form-group-lastname">
+						<label class="control-label" for="register-lastName">Achternaam:</label>
+						<input id="register-lastName" name="register-lastName" type="text" placeholder="achternaam" class="form-control" required="">
+
+					</div>
+
+					<div class="form-group" id="register-form-group-email">
+						<label  class="control-label" for="register-email">Emai addres:</label>
+						<input id="register-email" name="register-email" type="email" placeholder="Email adres" class="form-control" required="">
+
+					</div>
+
+					<div class="form-group" id="register-form-group-password">
+						<label class="control-label" for="register-password">Wachtwoord:</label>
+						<input id="register-password" name="register-password"  type="password" placeholder="wachtwoord" class="form-control" required="" onkeyup="checkPassword()"/>
+					</div>
+
+					<div class="form-group" id="register-form-group-password-again">
+						<label class="control-label" for="register-password-again">wachtwoord controle:</label>
+						<input id="register-password-again" name="register-password-again" type="password" placeholder="wachtwoord" class="form-control" required="" onkeyup="checkPassword()"/>
+					</div>
+
+					<div id="register-feedback-data">
+
+					</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Venster sluiten</button>
+				<input type="submit" class="btn btn-primary" value="Registreeren"/>
+			</div>
+			</form>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 <nav class="navbar navbar-inverse" role="navigation">
 	<div class="container-fluid" id="container-fluid-navbar">
@@ -56,6 +118,7 @@
 					<input type="password" placeholder="Password" id="password" class="form-control">
 				</div>
 				<button type="submit" class="btn btn-success">Login</button>
+				<button type="button" class="btn btn-info" data-toggle="modal" data-target=".register-modal">Register</button>
 			</form>
 
 		</div><!-- /.navbar-collapse -->
