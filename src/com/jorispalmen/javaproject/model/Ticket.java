@@ -14,7 +14,7 @@ public class Ticket
 	private long id;
 	private long eventId;
 	private long userId;
-	private Date boughtAt;
+	private String boughtAt;
 
 	public long getId()
 	{
@@ -46,13 +46,24 @@ public class Ticket
 		this.userId = userId;
 	}
 
-	public Date getBoughtAt()
+	public String getBoughtAt()
 	{
 		return boughtAt;
 	}
 
-	public void setBoughtAt(Date boughtAt)
+	public void setBoughtAt(String boughtAt)
 	{
 		this.boughtAt = boughtAt;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "Ticket{" +
+				"id=" + id +
+				", eventId=" + eventId +
+				", userId=" + userId +
+				", boughtAt='" + boughtAt + '\'' +
+				'}';
 	}
 }

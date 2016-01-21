@@ -65,7 +65,40 @@ $(document).ready(function(){
         $.post("ProcessLogout.jsp", function( data ){
             window.location.replace("index.jsp");
         })
-    })
+    });
+
+    $("#order-tickets-form").on("submit", function( event ){
+        event.preventDefault();
+
+        var ticketAmount = $("#input-ticket-amount").val();
+        var eventId = $("#input-eventId").val();
+        var userId = $("#userId").val();
+
+        var postData = {
+            amountOfTickets: ticketAmount,
+            eventId: eventId,
+            userId: userId
+        };
+
+        $.post("ProcessOrderTicket.jsp", postData, function( result ){
+            console.log("[debug]" + result );
+            $(".order-modal").modal('show');
+        });
+    });
+
+    $("#input-ticket-amount").bind('keyup mouseup', function () {
+        console.log("[debug] Ticket updated");
+        var ticketAmount = $("#input-ticket-amount").val();
+        var ticketPrice = $("#ticketPrice").val();
+        console.log("[debug]Ticket amount:"+ticketAmount);
+        console.log("[debug]Ticket Price:"+ticketPrice);
+        var price = 0;
+        var $outputBox =  $("#total-price");
+
+        price = ticketAmount * ticketPrice;
+        $outputBox.html("&euro;" + Math.round(price * 100) / 100);
+    });
+
 
 });
 

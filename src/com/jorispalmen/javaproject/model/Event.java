@@ -16,6 +16,30 @@ public class Event
 	private String description;
 	private String createdAt;
 	private String eventDate;
+	private float price;
+
+	@Override
+	public String toString()
+	{
+		return "Event{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", description='" + description + '\'' +
+				", createdAt='" + createdAt + '\'' +
+				", eventDate='" + eventDate + '\'' +
+				", price='" + price + '\'' +
+				'}';
+	}
+
+	public float getPrice()
+	{
+		return price;
+	}
+
+	public void setPrice(float price)
+	{
+		this.price = price;
+	}
 
 	public long getId()
 	{
@@ -67,15 +91,4 @@ public class Event
 		this.eventDate = eventDate;
 	}
 
-	@Override
-	public String toString()
-	{
-		return "Event{" +
-				"id=" + id +
-				", name='" + name + '\'' +
-				", description='" + description + '\'' +
-				", createdAt=" + createdAt +
-				", eventDate=" + eventDate +
-				'}';
-	}
 }

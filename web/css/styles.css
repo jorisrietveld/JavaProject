@@ -27,7 +27,6 @@
 }
 
 body{
-    background-image: url("../images/background.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
+    background-image: url("../images/grey_wash_wall/grey_wash_wall/grey_wash_wall.png");
+    background-repeat: repeat;
 }

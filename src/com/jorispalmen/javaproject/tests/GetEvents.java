@@ -97,8 +97,4 @@ public class GetEvents
 		Event event = daoManager.getEventDao().getEventById( 1 );
 		daoManager.getEventDao().deleteEvent( event );
 	}
-
-
-
-
 }

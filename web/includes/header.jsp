@@ -100,9 +100,6 @@
 					<a href="agenda.jsp">Agenda</a>
 				</li>
 				<li>
-					<a href="tickets.jsp">Tickets</a>
-				</li>
-				<li>
 					<a href="route.jsp">Route</a>
 				</li>
 				<li>

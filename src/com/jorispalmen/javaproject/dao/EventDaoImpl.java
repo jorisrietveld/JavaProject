@@ -28,31 +28,32 @@ public class EventDaoImpl implements EventDao
 
 	public List<Event> getAllEvents()
 	{
-		String sql = "SELECT `id`,`name`,`description`,`createdAt`,`eventDate` FROM `JavaProject`.`events`";
+		String sql = "SELECT `id`,`name`,`description`,`createdAt`,`eventDate`,`price` FROM `JavaProject`.`events`";
 		return getEvents( sql );
 	}
 
 	public Event getEventById(long id)
 	{
-		String sql = "SELECT `id`,`name`,`description`,`createdAt`,`eventDate` FROM `JavaProject`.`events` WHERE id="+id;
+		String sql = "SELECT `id`,`name`,`description`,`createdAt`,`eventDate`,`price` FROM `JavaProject`.`events` WHERE id="+id;
 		return getEvent( sql );
 	}
 
 	public Event getEventByName( String name )
 	{
-		String sql = "SELECT `id`,`name`,`description`,`createdAt`,`eventDate` FROM `JavaProject`.`events` WHERE name='"+name+"'";
+		String sql = "SELECT `id`,`name`,`description`,`createdAt`,`eventDate`,`price` FROM `JavaProject`.`events` WHERE name='"+name+"'";
 		return getEvent( sql );
 	}
 
 	public void updateEvent( Event event )
 	{
-		String sql = "UPDATE `JavaProject`.`events` SET name=?, description=?, createdAt=?, eventDate=? WHERE id=?";
+		String sql = "UPDATE `JavaProject`.`events` SET name=?, description=?, createdAt=?, eventDate=?, price=? WHERE id=?";
 		try{
 			PreparedStatement statement = connection.prepareStatement( sql );
 			statement.setString( 1, event.getName() );
 			statement.setString( 2, event.getDescription() );
 			statement.setString( 3, event.getCreatedAt() );
 			statement.setString( 4, event.getEventDate() );
+			statement.setFloat( 5, event.getPrice() );
 			statement.setLong( 5, event.getId() );
 
 			statement.execute();
@@ -80,7 +81,7 @@ public class EventDaoImpl implements EventDao
 
 	public Event insertEvent( Event event )
 	{
-		String sql = "INSERT INTO `JavaProject`.`events`( `name`,`description`,`createdAt`,`eventDate` ) VALUES( ?, ?, ?, ? )";
+		String sql = "INSERT INTO `JavaProject`.`events`( `name`,`description`,`createdAt`,`eventDate`,`price` ) VALUES( ?, ?, ?, ?, ? )";
 
 		try{
 			PreparedStatement statement = connection.prepareStatement( sql, PreparedStatement.RETURN_GENERATED_KEYS );
@@ -88,6 +89,7 @@ public class EventDaoImpl implements EventDao
 			statement.setString( 2, event.getDescription() );
 			statement.setString( 3, event.getCreatedAt() );
 			statement.setString( 4, event.getEventDate() );
+			statement.setFloat( 5, event.getPrice() );
 			statement.execute();
 
 			ResultSet generatedKeys = statement.getGeneratedKeys();
@@ -119,6 +121,7 @@ public class EventDaoImpl implements EventDao
 				event.setDescription( resultSet.getString( "description" ) );
 				event.setEventDate( resultSet.getString( "eventDate" ) );
 				event.setCreatedAt( resultSet.getString( "createdAt" ) );
+				event.setPrice( resultSet.getFloat( "price" ) );
 				events.add( event );
 			}
 		}
@@ -143,6 +146,7 @@ public class EventDaoImpl implements EventDao
 				event.setName( resultSet.getString( "name" ) );
 				event.setDescription( resultSet.getString( "description" ) );
 				event.setEventDate( resultSet.getString( "eventDate" ) );
+				event.setPrice( resultSet.getFloat( "price" ));
 				event.setCreatedAt( resultSet.getString( "createdAt" ) );
 			}
 		}

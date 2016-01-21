@@ -1,3 +1,5 @@
+<%@page import="com.jorispalmen.javaproject.Controller.AgendaController" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,26 +17,16 @@
 			<h1>Agenda</h1>
 			<table class="table table-striped">
 				<thead>
-				<th>date</th>
-				<th>event</th>
-				<th>artists</th>
+				<th>Datum event:</th>
+				<th>Naam:</th>
+				<th>Beschrijving</th>
 				<th>bestel</th>
 				</thead>
 				<tbody>
-				<tr>
-					<td>bla</td>
-					<td>ksdj</td>
-					<td>ksdj</td>
-					<td>ksdj</td>
-
-				</tr>
-				<tr>
-					<td>ksdj</td>
-					<td>ksdj</td>
-					<td>ksdj</td>
-					<td>ksdj</td>
-				</tr>
-
+				<%
+					AgendaController agendaController = new AgendaController();
+					out.println(agendaController.getAgenda());
+				%>
 				</tbody>
 			</table>
 		</div>
