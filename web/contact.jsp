@@ -11,5 +11,12 @@
 	<%@include file="includes/header-logged-in.jsp"%>
 	<% } %>
 
+	<div class="container">
+		<div class="jumbotron">
+			<h3>contact</h3>
+			<p></p>
+		</div>
+	</div>
+
 </body>
 </html>

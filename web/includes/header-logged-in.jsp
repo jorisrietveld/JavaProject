@@ -1,3 +1,4 @@
+<%@ page import="com.jorispalmen.javaproject.Controller.OrderdTicketsController" %>
 <nav class="navbar navbar-inverse" role="navigation">
 	<div class="container-fluid" id="container-fluid-navbar">
 
@@ -29,9 +30,14 @@
 				<li>
 					<a href="agenda.jsp">Agenda</a>
 				</li>
-				<li>
-					<a href="tickets.jsp">Tickets</a>
-				</li>
+				<%
+					OrderdTicketsController orderdTicketsController = new OrderdTicketsController();
+					Long userId = Long.parseLong( request.getSession().getAttribute("userId").toString() );
+					if( orderdTicketsController.HasTickets( userId ))
+					{
+						out.println("<li><a href=\"myOrders.jsp\">Mijn tickets</a></li>");
+					}
+				%>
 				<li>
 					<a href="route.jsp">Route</a>
 				</li>

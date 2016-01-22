@@ -23,7 +23,6 @@ public class TicketController
 {
 	protected TicketDaoImpl ticketDao;
 	protected EventDaoImpl eventDao;
-	protected int maxTicktets = 100;
 	protected String debugMessages = "";
 	
 	public TicketController()
@@ -36,6 +35,11 @@ public class TicketController
 	public String getTicketInfo( long eventId )
 	{
 		Event event = eventDao.getEventById( eventId );
+
+		if( ticketsAvailable( eventId ) < 1 )
+		{
+			return "<h2>Hellaas zijn de tickets voor dit evenement uitverkocht</h2>";
+		}
 
 		return "<table class=\"table\">" +
 				"<thead><form id=\"order-tickets-form\">" +
@@ -53,8 +57,8 @@ public class TicketController
 	public int ticketsAvailable( long eventId )
 	{
 		List<Ticket> tickets = ticketDao.getAllTicketsByEventId( eventId );
-
-		return maxTicktets - tickets.size();
+		Event event = eventDao.getEventById( eventId );
+		return event.getTicketsAvailable() - tickets.size();
 	}
 
 	public void orderTicket(TicketBean ticketBean)
@@ -62,7 +66,7 @@ public class TicketController
 		String boughtAt = new Date( System.currentTimeMillis()).toString();
 		int ticketsBought = 0;
 
-		while( ticketBean.getAmountOfTickets() == ticketsBought )
+		while( ticketBean.getAmountOfTickets() > ticketsBought )
 		{
 			buyTicket( ticketBean.getUserId(), ticketBean.getEventId(), boughtAt );
 			ticketsBought++;

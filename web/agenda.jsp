@@ -20,6 +20,7 @@
 				<th>Datum event:</th>
 				<th>Naam:</th>
 				<th>Beschrijving</th>
+				<th>prijs</th>
 				<th>bestel</th>
 				</thead>
 				<tbody>

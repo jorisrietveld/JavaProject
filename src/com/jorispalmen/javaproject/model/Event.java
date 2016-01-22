@@ -17,18 +17,16 @@ public class Event
 	private String createdAt;
 	private String eventDate;
 	private float price;
+	private int ticketsAvailable;
 
-	@Override
-	public String toString()
+	public int getTicketsAvailable()
 	{
-		return "Event{" +
-				"id=" + id +
-				", name='" + name + '\'' +
-				", description='" + description + '\'' +
-				", createdAt='" + createdAt + '\'' +
-				", eventDate='" + eventDate + '\'' +
-				", price='" + price + '\'' +
-				'}';
+		return ticketsAvailable;
+	}
+
+	public void setTicketsAvailable(int ticketsAvailable)
+	{
+		this.ticketsAvailable = ticketsAvailable;
 	}
 
 	public float getPrice()
@@ -89,6 +87,20 @@ public class Event
 	public void setEventDate(String eventDate)
 	{
 		this.eventDate = eventDate;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "Event{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", description='" + description + '\'' +
+				", createdAt='" + createdAt + '\'' +
+				", eventDate='" + eventDate + '\'' +
+				", price=" + price +
+				", ticketsAvailable=" + ticketsAvailable +
+				'}';
 	}
 
 }
